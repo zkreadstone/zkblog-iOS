@@ -1,6 +1,8 @@
 IOS开发中位图BitMap的使用
+在子线程中先将图片绘制到CGBitmapContext，然后从Bitmap 直接创建图片，这样做的目的减轻主线程的压力，图片解码等耗性能操作放到异步子线程解码。
 解析图片根据BitMap生成图片，提高图片加载效率
-```
+
+```Objective-c
 dispatch_async(queue, ^{
  CGImageRef cgImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self]]].CGImage;
  CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(cgImage) & kCGBitmapAlphaInfoMask;
