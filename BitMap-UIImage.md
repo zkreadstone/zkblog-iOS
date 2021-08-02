@@ -28,6 +28,6 @@ dispatch_async(queue, ^{
  UIImage * image = [[UIImage imageWithCGImage:cgImage] cornerRadius:width * 0.5];
  CGContextRelease(context);
  CGImageRelease(cgImage);
- completion(image);
+ completion(image);//解码后的回调
 });
 ```
